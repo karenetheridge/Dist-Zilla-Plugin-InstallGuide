@@ -79,10 +79,15 @@ For more information on installing Perl modules via CPAN, please see:
 https://www.cpan.org/modules/INSTALL.html
 END_TEXT
 
-has makemaker_manual_installation => (is => 'ro', isa => 'Str', default => <<'END_TEXT');
+our $common_instructions = <<'END_TEXT';
 As a last resort, you can manually install it. Download the tarball, untar it,
 then build it:
 
+END_TEXT
+
+has makemaker_manual_installation => (
+    is => 'ro', isa => 'Str',
+    default => $common_instructions . <<'END_TEXT',
     % perl Makefile.PL
     % make && make test
 
@@ -96,11 +101,11 @@ If your perl is system-managed, you can create a local::lib in your home
 directory to install modules to. For details, see the local::lib documentation:
 https://metacpan.org/pod/local::lib
 END_TEXT
+);
 
-has module_build_manual_installation => (is => 'ro', isa => 'Str', default => <<'END_TEXT');
-As a last resort, you can manually install it. Download the tarball, untar it,
-then build it:
-
+has module_build_manual_installation => (
+    is => 'ro', isa => 'Str',
+    default => $common_instructions . <<'END_TEXT',
     % perl Build.PL
     % ./Build && ./Build test
 
@@ -119,6 +124,7 @@ If your perl is system-managed, you can create a local::lib in your home
 directory to install modules to. For details, see the local::lib documentation:
 https://metacpan.org/pod/local::lib
 END_TEXT
+);
 
 =head2 gather_files
 
