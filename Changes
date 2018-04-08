@@ -1,6 +1,7 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+ - minor whitespace fixes
 
 1.200009  2018-03-19
  - Grammar fix

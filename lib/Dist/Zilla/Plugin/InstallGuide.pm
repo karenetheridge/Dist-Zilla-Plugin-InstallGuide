@@ -74,6 +74,9 @@ by running the manual build process described above.
 You can run `perldoc` from a shell to read the documentation:
 
     % perldoc {{ $package }}
+
+For more information on installing Perl modules via CPAN, please see:
+https://www.cpan.org/modules/INSTALL.html
 END_TEXT
 
 has makemaker_manual_installation => (is => 'ro', isa => 'Str', default => <<'END_TEXT');
@@ -117,11 +120,6 @@ directory to install modules to. For details, see the local::lib documentation:
 https://metacpan.org/pod/local::lib
 END_TEXT
 
-has cpan_reference => (is => 'ro', isa => 'Str', default => <<END_TEXT);
-For more information on installing Perl modules via CPAN, please see:
-https://www.cpan.org/modules/INSTALL.html
-END_TEXT
-
 =head2 gather_files
 
 Creates the F<INSTALL> file.
@@ -131,13 +129,11 @@ Creates the F<INSTALL> file.
 sub gather_files {
     my $self = shift;
 
-    my $content = $self->template;
-    $content .= $self->cpan_reference;
-
     require Dist::Zilla::File::InMemory;
     $self->add_file(Dist::Zilla::File::InMemory->new({
         name => 'INSTALL',
-        content => $content,
+        content => $self->template,
+
     }));
 
     return;
