@@ -63,7 +63,6 @@ Alternatively, if your CPAN shell is set up, you should just be able to do:
 ## Manual installation
 
 {{ $manual_installation }}
-
 The prerequisites of this distribution will also have to be installed manually. The
 prerequisites are listed in one of the files: `MYMETA.yml` or `MYMETA.json` generated
 by running the manual build process described above.
