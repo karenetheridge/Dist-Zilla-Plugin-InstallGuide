@@ -1,6 +1,8 @@
 Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
+
+1.200010  2018-07-22
  - minor whitespace fixes
  - add section about satisfying configure prerequisites
 
