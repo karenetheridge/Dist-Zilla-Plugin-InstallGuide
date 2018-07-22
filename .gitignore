@@ -1,3 +1,5 @@
-Dist-Zilla-Plugin-InstallGuide-*
-.build
-_build
+/.build
+/.latest
+/.ackrc
+/Dist-Zilla-Plugin-InstallGuide-*
+/Dist-Zilla-Plugin-InstallGuide-*.tar.gz
