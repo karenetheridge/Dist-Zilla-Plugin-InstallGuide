@@ -1,0 +1,113 @@
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+Dist::Zilla::Plugin::InstallGuide - Build an INSTALL file
+
+=head1 VERSION
+
+version 1.200011
+
+=for test_synopsis BEGIN { die "SKIP: synopsis isn't perl code" }
+
+=head1 SYNOPSIS
+
+In C<dist.ini>:
+
+    [InstallGuide]
+
+=head1 DESCRIPTION
+
+This plugin adds a very simple F<INSTALL> file to the distribution, telling
+the user how to install this distribution.
+
+You should use this plugin in your L<Dist::Zilla> configuration after
+C<[MakeMaker]> or C<[ModuleBuild]> so that it can determine what kind of
+distribution you are building and which installation instructions are
+appropriate.
+
+=head1 METHODS
+
+=head2 gather_files
+
+Creates the F<INSTALL> file.
+
+=head2 munge_files
+
+Inserts the appropriate installation instructions into F<INSTALL>.
+
+=head1 SUPPORT
+
+Bugs may be submitted through L<the RT bug tracker|https://rt.cpan.org/Public/Dist/Display.html?Name=Dist-Zilla-Plugin-InstallGuide>
+(or L<bug-Dist-Zilla-Plugin-InstallGuide@rt.cpan.org|mailto:bug-Dist-Zilla-Plugin-InstallGuide@rt.cpan.org>).
+
+There is also a mailing list available for users of this distribution, at
+L<http://dzil.org/#mailing-list>.
+
+There is also an irc channel available for users of this distribution, at
+L<C<#distzilla> on C<irc.perl.org>|irc://irc.perl.org/#distzilla>.
+
+=head1 AUTHORS
+
+=over 4
+
+=item *
+
+Marcel Grünauer <marcel@cpan.org>
+
+=item *
+
+Mike Doherty <doherty@cpan.org>
+
+=back
+
+=head1 CONTRIBUTORS
+
+=for stopwords Mike Doherty Karen Etheridge Marcel Gruenauer jonasbn Dan Book Dave Rolsky Apocalypse
+
+=over 4
+
+=item *
+
+Mike Doherty <mike@mikedoherty.ca>
+
+=item *
+
+Karen Etheridge <ether@cpan.org>
+
+=item *
+
+Marcel Gruenauer <hanekomu@gmail.com>
+
+=item *
+
+jonasbn <jonasbn@gmail.com>
+
+=item *
+
+Mike Doherty <doherty@cs.dal.ca>
+
+=item *
+
+Dan Book <grinnz@gmail.com>
+
+=item *
+
+Dave Rolsky <autarch@urth.org>
+
+=item *
+
+Apocalypse <APOCAL@cpan.org>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Marcel Grünauer <marcel@cpan.org>.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
