@@ -3,14 +3,16 @@ use strict;
 use warnings;
 
 package Dist::Zilla::Plugin::InstallGuide;
-
 # ABSTRACT: Build an INSTALL file
-# VERSION
+
+our $VERSION = '1.200011';
+
 use Moose;
 with 'Dist::Zilla::Role::FileGatherer';
 with 'Dist::Zilla::Role::TextTemplate';
 with 'Dist::Zilla::Role::FileMunger';
 use List::Util 1.33 qw(first any);
+use namespace::autoclean;
 
 =head1 SYNOPSIS
 

@@ -1,6 +1,7 @@
-Revision history for Perl extension {{$dist->name}}
+Revision history for Perl extension Dist-Zilla-Plugin-InstallGuide
 
 {{$NEXT}}
+ - re-release to fix repository metadata
 
 1.200010  2018-07-22
  - minor whitespace fixes
