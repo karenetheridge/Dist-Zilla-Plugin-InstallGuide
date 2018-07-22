@@ -1,5 +1,7 @@
 Revision history for Perl extension Dist-Zilla-Plugin-InstallGuide
 
+{{$NEXT}}
+
 1.200011  2018-07-22 23:52:14Z
  - re-release to fix repository metadata
 
