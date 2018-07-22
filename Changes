@@ -2,6 +2,7 @@ Revision history for Perl extension {{$dist->name}}
 
 {{$NEXT}}
  - minor whitespace fixes
+ - add section about satisfying configure prerequisites
 
 1.200009  2018-03-19
  - Grammar fix

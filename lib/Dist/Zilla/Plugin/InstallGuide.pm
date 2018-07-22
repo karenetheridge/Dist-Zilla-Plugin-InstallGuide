@@ -10,7 +10,7 @@ use Moose;
 with 'Dist::Zilla::Role::FileGatherer';
 with 'Dist::Zilla::Role::TextTemplate';
 with 'Dist::Zilla::Role::FileMunger';
-use List::Util 'first';
+use List::Util 1.33 qw(first any);
 
 =head1 SYNOPSIS
 
@@ -67,6 +67,15 @@ The prerequisites of this distribution will also have to be installed manually. 
 prerequisites are listed in one of the files: `MYMETA.yml` or `MYMETA.json` generated
 by running the manual build process described above.
 
+## Configure Prerequisites
+
+This distribution requires other modules to be installed before this
+distribution's installer can be run.  They can be found under the
+{{ join(" or the\n",
+    $has_meta_yml ? '"configure_requires" key of META.yml' : '',
+    $has_meta_json ? '"{prereqs}{configure}{requires}" key of META.json' : '',
+)}}.
+
 ## Documentation
 
 {{ $dist->name }} documentation is available as POD.
@@ -80,7 +89,7 @@ END_TEXT
 
 our $common_instructions = <<'END_TEXT';
 As a last resort, you can manually install it. Download the tarball, untar it,
-then build it:
+install configure prerequisites (see below), then build it:
 
 END_TEXT
 
@@ -183,6 +192,8 @@ sub munge_files {
         {   dist                => \$zilla,
             package             => $main_package,
             manual_installation => $manual_installation,
+            has_meta_yml        => (any { $_->name eq 'META.yml' } @{ $zilla->files }),
+            has_meta_json       => (any { $_->name eq 'META.json' } @{ $zilla->files }),
         }
     );
 
