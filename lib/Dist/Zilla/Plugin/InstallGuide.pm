@@ -78,6 +78,23 @@ distribution's installer can be run.  They can be found under the
     $has_meta_json ? '"{prereqs}{configure}{requires}" key of META.json' : '',
 )}}.
 
+## Other Prerequisites
+
+This distribution may require additional modules to be installed after running
+{{ join(' or ', grep { $installer{$_} } qw(Build.PL Makefile.PL)) }}.
+Look for prerequisites in the following phases:
+
+* to run {{ join(' or ',
+    ($installer{'Build.PL'} ? './Build' : ()),
+    ($installer{'Makefile.PL'} ? 'make' : ())) }}, PHASE = build
+* to use the module code itself, PHASE = runtime
+* to run tests, PHASE = test
+
+They can all be found in the {{ join(" or the\n",
+    $has_meta_yml ? '"PHASE_requires" key of MYMETA.yml' : '',
+    $has_meta_json ? '"{prereqs}{PHASE}{requires}" key of MYMETA.json' : '',
+)}}.
+
 ## Documentation
 
 {{ $dist->name }} documentation is available as POD.
@@ -149,7 +166,6 @@ sub gather_files {
     $self->add_file(Dist::Zilla::File::InMemory->new({
         name => 'INSTALL',
         content => $self->template,
-
     }));
 
     return;
@@ -196,6 +212,7 @@ sub munge_files {
             manual_installation => $manual_installation,
             has_meta_yml        => (any { $_->name eq 'META.yml' } @{ $zilla->files }),
             has_meta_json       => (any { $_->name eq 'META.json' } @{ $zilla->files }),
+            installer           => \%installer,
         }
     );
 
