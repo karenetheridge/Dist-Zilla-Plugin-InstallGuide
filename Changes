@@ -1,5 +1,7 @@
 Revision history for Perl extension Dist-Zilla-Plugin-InstallGuide
 
+{{$NEXT}}
+
 1.200012  2018-11-03 07:10:02Z
  - add section about satisfying other prerequisites
 

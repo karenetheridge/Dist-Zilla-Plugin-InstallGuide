@@ -5,7 +5,7 @@ use warnings;
 package Dist::Zilla::Plugin::InstallGuide;
 # ABSTRACT: Build an INSTALL file
 
-our $VERSION = '1.200012';
+our $VERSION = '1.200013';
 
 use Moose;
 with 'Dist::Zilla::Role::FileGatherer';
