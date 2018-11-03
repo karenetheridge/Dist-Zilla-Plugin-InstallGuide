@@ -8,7 +8,7 @@ Dist::Zilla::Plugin::InstallGuide - Build an INSTALL file
 
 =head1 VERSION
 
-version 1.200011
+version 1.200012
 
 =for test_synopsis BEGIN { die "SKIP: synopsis isn't perl code" }
 
