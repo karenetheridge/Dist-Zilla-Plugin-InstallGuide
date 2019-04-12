@@ -11,6 +11,7 @@ use Moose;
 with 'Dist::Zilla::Role::FileGatherer';
 with 'Dist::Zilla::Role::TextTemplate';
 with 'Dist::Zilla::Role::FileMunger';
+with 'Dist::Zilla::Role::ModuleMetadata';
 use List::Util 1.33 qw(first any);
 use namespace::autoclean;
 
@@ -201,7 +202,7 @@ sub munge_files {
         $self->log_fatal('neither Makefile.PL nor Build.PL is present, aborting');
     }
 
-    (my $main_package = $zilla->name) =~ s!-!::!g;
+    my $main_package = $self->module_metadata_for_file($zilla->main_module, collect_pod => 0)->name;
 
     my $file = first { $_->name eq 'INSTALL' } @{ $zilla->files };
 
