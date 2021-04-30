@@ -65,6 +65,12 @@ Alternatively, if your CPAN shell is set up, you should just be able to do:
 
 ## Manual installation
 
+As a last resort, you can manually install it. If you have not already
+downloaded the release tarball, you can find the download link on the module's
+MetaCPAN page: https://metacpan.org/pod/{{ $package }}
+
+Untar the tarball, install configure prerequisites (see below), then build it:
+
 {{ $manual_installation }}
 The prerequisites of this distribution will also have to be installed manually. The
 prerequisites are listed in one of the files: `MYMETA.yml` or `MYMETA.json` generated
@@ -107,15 +113,9 @@ For more information on installing Perl modules via CPAN, please see:
 https://www.cpan.org/modules/INSTALL.html
 END_TEXT
 
-our $common_instructions = <<'END_TEXT';
-As a last resort, you can manually install it. Download the tarball, untar it,
-install configure prerequisites (see below), then build it:
-
-END_TEXT
-
 has makemaker_manual_installation => (
     is => 'ro', isa => 'Str',
-    default => $common_instructions . <<'END_TEXT',
+    default => <<'END_TEXT',
     % perl Makefile.PL
     % make && make test
 
@@ -133,7 +133,7 @@ END_TEXT
 
 has module_build_manual_installation => (
     is => 'ro', isa => 'Str',
-    default => $common_instructions . <<'END_TEXT',
+    default => <<'END_TEXT',
     % perl Build.PL
     % ./Build && ./Build test
 
