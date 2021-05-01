@@ -1,6 +1,7 @@
 Revision history for Perl extension Dist-Zilla-Plugin-InstallGuide
 
 {{$NEXT}}
+ - add instructions for where to download the release tarball (Dan Book)
 
 1.200013  2019-04-12 19:57:45Z
  - use the proper module name in the generated file, rather than deriving it
