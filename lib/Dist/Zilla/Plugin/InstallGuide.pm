@@ -88,7 +88,7 @@ distribution's installer can be run.  They can be found under the
 ## Other Prerequisites
 
 This distribution may require additional modules to be installed after running
-{{ join(' or ', grep { $installer{$_} } qw(Build.PL Makefile.PL)) }}.
+{{ join(' or ', grep $installer{$_}, qw(Build.PL Makefile.PL)) }}.
 Look for prerequisites in the following phases:
 
 * to run {{ join(' or ',
@@ -186,10 +186,10 @@ sub munge_files {
     my $manual_installation = '';
 
     my %installer = (
-        map {
+        map +(
             $_->isa('Dist::Zilla::Plugin::MakeMaker') ? ( 'Makefile.PL' => 1 ) : (),
             $_->does('Dist::Zilla::Role::BuildPL') ? ( 'Build.PL' => 1 ) : (),
-        } @{ $zilla->plugins }
+        ), @{ $zilla->plugins }
     );
 
     if ($installer{'Build.PL'}) {
