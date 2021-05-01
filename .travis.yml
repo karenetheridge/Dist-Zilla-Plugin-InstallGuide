@@ -5,8 +5,8 @@ addons:
       - aspell-en
 language: perl
 perl:
-  - blead       # builds perl from git
-  - dev         # latest point release
+  - "5.32"
+  - "5.30"
   - "5.28"
   - "5.26"
   - "5.24"
@@ -18,8 +18,12 @@ perl:
   - "5.12"
   - "5.10"
   - "5.8"
+  - blead       # builds perl from git
+  - dev         # latest point release
 matrix:
   allow_failures:
+    - perl: "5.12"
+    - perl: "5.10"
       # some prereqs may require 5.10
     - perl: "5.8"
   fast_finish: 1
